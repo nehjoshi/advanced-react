@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "name": "Apple Airpods 3",
+            "price": 99
+        },
+        {
+            "name": "Samsung Galaxy Buds 2",
+            "price": 89
+        },
+        {
+            "name": "Sony WF-1000XM4",
+            "price": 129
+        },
+        {
+            "name": "Jabra Elite 7 Pro",
+            "price": 119
+        },
+        {
+            "name": "Beats Studio Buds",
+            "price": 99
+        },
+        {
+            "name": "Bose QuietComfort Earbuds",
+            "price": 149
+        },
+        {
+            "name": "Sennheiser CX Plus",
+            "price": 109
+        },
+        {
+            "name": "Google Pixel Buds Pro",
+            "price": 139
+        },
+        {
+            "name": "Anker Soundcore Liberty 3 Pro",
+            "price": 79
+        },
+        {
+            "name": "Nothing Ear (2)",
+            "price": 99
+        }
+    ]
+}
