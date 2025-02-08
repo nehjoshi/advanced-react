@@ -1,15 +1,21 @@
 import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../state/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../state/store'
 import Item from '../components/Item';
 import { Link } from 'react-router';
+import { clear } from "../state/cart/cartSlice";
 
 const Cart = () => {
     const cart = useSelector((state: RootState) => state.cart);
+    const dispatch = useDispatch<AppDispatch>();
 
     const sortedProducts = useMemo(() => {
         return [...cart.products].sort((a, b) => b.quantity - a.quantity);
     }, [cart.products]);
+
+    const handleClearCart = () => {
+        dispatch(clear());
+    }
 
     return (
         <main className='w-full h-full flex flex-col'>
@@ -38,6 +44,9 @@ const Cart = () => {
                     <p className="text-lg text-white">Cart total</p>
                     <p className="text-lg text-white">${cart.total}.00</p>
                 </div>
+                <button
+                    className="w-full mt-4 bg-red-500 text-white"
+                    onClick={handleClearCart}>Clear cart</button>
             </section>
         </main>
     )

@@ -13,12 +13,9 @@ let store: Store;
 let getByTestId: any;
 let getByText: any;
 
-beforeEach(() => {
-    
-});
-
 describe(Item, () => {
     it("should add item to store when clicking on + sign", () => {
+        //Create store with empty values
         store = configureStore({
             reducer: {
                 cart: cartReducer
@@ -31,14 +28,19 @@ describe(Item, () => {
                 }
             }
         });
+        //Render component with the above store
         ({getByText, getByTestId} = render(
             <Provider store={store}>
                 <Item {...sampleItem} />
             </Provider>
         ))
+        //Get the + button
         const plusButton = getByText("+");
+        //Fire the event
         fireEvent.click(plusButton);
+        //Get current store state
         let currentStore = store.getState();
+        //Check if correct
         expect(currentStore.cart.products).toContainEqual({
             name: "Sample Item",
             price: 50,
@@ -78,6 +80,7 @@ describe(Item, () => {
         fireEvent.click(minusButton);
         //Get state of the store after the event
         const currentStore = store.getState();
+        //Check if correct
         expect(currentStore.cart.products.length).toEqual(0);
         expect(currentStore.cart.total).toEqual(0);
         expect(currentStore.cart.numberOfProducts).toEqual(0);
