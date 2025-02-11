@@ -8,18 +8,20 @@ type Coffee = {
     id: number
 }
 const URL = "https://api.sampleapis.com/coffee/hot";
+
 const Fun = () => {
-    // const [coffees, setCoffees] = useState<Coffee[]>([]);
 
     const getData = async () => {
         const rawData = await fetch(URL);
         return await rawData.json();
     }
 
-    const { data: coffees, isLoading } = useQuery<Coffee[]>({
+    const { data: coffees, isLoading, dataUpdatedAt } = useQuery<Coffee[]>({
         queryFn: getData,
         queryKey: ["coffees"]
     });
+
+    console.log("Data updated at: ", new Date(dataUpdatedAt).toLocaleString());
 
     if (isLoading) {
         return <div>Loading...</div>
@@ -30,7 +32,9 @@ const Fun = () => {
             <h1 className="text-blue-900 font-bold">Coffee Page</h1>
             <div className="flex flex-col">
                 {coffees?.map((coffee) => (
-                    <div key={coffee.id}>{coffee.title}</div>
+                    <div key={coffee.id} className="mt-3">
+                        <h2 className="text-lg font-bold">{coffee.title}</h2>
+                    </div>
                 ))}
             </div>
         </main>
