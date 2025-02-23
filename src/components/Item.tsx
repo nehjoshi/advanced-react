@@ -26,19 +26,19 @@ const Item = ({ name, price, quantity, readOnly }: ItemProps) => {7
     }
 
     return (
-        <div className='bg-white rounded-lg p-4 text-white w-[300px]'>
+        <div className='bg-white rounded-lg p-4 text-white w-[300px]' data-testid={`cy-item-${name}`}>
             <h4 className='text-black font-bold'>{name}</h4>
             <h6 className='text-blue-900 font-bold'>${price}.00</h6>
             {!readOnly &&
                 <div className='flex justify-between mt-6'>
-                    <button className='bg-black hover:bg-blue-950' onClick={handleAddProduct}>+</button>
-                    <p className='text-black' data-testid="quantity">{productInCart?.quantity || 0}</p>
+                    <button className='bg-black hover:bg-blue-950' onClick={handleAddProduct} data-testid={`cy-item-${name}-add`}>+</button>
+                    <p className='text-black' data-testid={`cy-item-${name}-quantity`}>{productInCart?.quantity || 0}</p>
                     <button className='bg-black hover:bg-blue-950' onClick={handleRemoveProduct}>-</button>
                 </div>
             }
             {readOnly &&
                 <div className='flex justify-center mt-6'>
-                    <p className='text-black'>Quantity: {quantity}</p>
+                    <p className='text-black' data-testid={`cy-item-${name}-quantity`}>Quantity: {quantity}</p>
                 </div>}
         </div>
     )

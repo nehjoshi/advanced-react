@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    // "esModuleInterop":true
+    "module": "NodeNext",
+    "moduleResolution": "nodenext"
+    // "esModuleInterop":true,
   },
   "files": [],
+  "include": ["src","cypress"],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
